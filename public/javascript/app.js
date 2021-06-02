@@ -82,7 +82,7 @@ function populateDom(result) {
                             <a href="${result.short_url}" target="_blank">${result.short_url}</a>
                             </div>
                             <div class="button">
-                                <button>copy</button>
+                                <button class= "copy">copy</button>
                             </div>
                         </div>
                     </div>`
