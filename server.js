@@ -18,6 +18,6 @@ app.set('view engine', 'ejs');
 app.use(route);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT || process.env.PORT , () => {
     console.log(`server is running of ${PORT} port`);
 })
