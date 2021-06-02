@@ -41,6 +41,8 @@ async function fetchurl() {
             console.log(result);
             populateDom(result);
         } catch (error) {
+            get_url.value = "";
+            get_url.placeholder = "Server is not connected";
             console.log('Error');
         }
     }
@@ -54,8 +56,10 @@ function validate(url) {
     console.log(result)
     if (!url || !result) {
         let input_url = document.querySelector('.input-url');
-        input_url.style.border = '4px solid hsl(0, 87%, 67%)';
         input_url.style.borderRadius = '8px';
+        get_url.value = "";
+        get_url.placeholder = "Enter a valid url";
+        get_url.style.color = 'hsl(0, 87%, 67%)';
         return false
     }
     else {
