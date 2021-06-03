@@ -42,7 +42,7 @@ async function fetchurl() {
             populateDom(result);
         } catch (error) {
             get_url.value = "";
-            get_url.placeholder = "Server is not connected";
+            get_url.placeholder = "Server error try again";
             console.log('Error');
         }
     }

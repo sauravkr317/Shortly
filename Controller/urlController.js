@@ -28,10 +28,11 @@ const urlController = {
                 // store in database
                 const { url } = req.body;
                 const short_id = shortid.generate();
-                const short_url = `${DOMAIN_URL}/api/${short_id.replace('-','')}`
+                const url_id = short_id.replace('-','');
+                const short_url = `${DOMAIN_URL}/api/${url_id}`;
                 const urlrequest = new urls({
                     long_url: url,
-                    short_id: short_id.replace("-", ""),
+                    short_id: url_id,
                     short_url,
                 });
 
