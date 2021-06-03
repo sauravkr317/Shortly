@@ -28,7 +28,7 @@ async function fetchurl() {
             url: trimurl
         }
         try {
-            const data = await fetch('https://short-url-app.herokuapp.com//api/', {
+            const data = await fetch('http://localhost:3000/api/', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
