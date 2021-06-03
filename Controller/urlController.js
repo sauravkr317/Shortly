@@ -40,11 +40,12 @@ const urlController = {
                     const result = await urlrequest.save();
                     res.json(result);
                 } catch (error) {
-                    return next(CustomerrorHandler.serverError());
+                    return next(CustomerrorHandler.serverError('something went wrong'))
+                    // return next(CustomerrorHandler.serverError());
                 }
             }
         } catch (error) {
-            return next(CustomerrorHandler.serverError());
+            return next(CustomerrorHandler.serverError('error'));
         }
     },
 
