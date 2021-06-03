@@ -40,6 +40,17 @@ async function fetchurl() {
             let result = await data.json();
             console.log(result);
             populateDom(result);
+            let copy_btn = document.querySelector('.copy');
+            copy_btn.addEventListener('click', () => {
+                if(!copy_btn.className.includes('copied')) {
+                    copy_btn.classList.add('copied');
+                } else{
+                    copy_btn.classList.remove('copied');
+                }
+                let copy_url = document.querySelector('.copy_url');
+                copy_url.select();
+                document.execCommand('Copy');
+            })
         } catch (error) {
             get_url.value = "";
             get_url.placeholder = "Server error try again";
@@ -72,17 +83,18 @@ function validate(url) {
 }
 
 function populateDom(result) {
-    let uistring = `<div class="result-url-wrapper">
+    let uistring =
+                    `<div class="result-url-wrapper">
                         <div class="long-url">
                             <h5>${result.long_url.slice(0, 35)}.....</h5>
                             <hr>
                         </div>
-                        <div class="short-url-wrapper">
-                            <div class="short_link">
-                            <a href="${result.short_url}" target="_blank">${result.short_url}</a>
-                            </div>
+                            <div class="short-url-wrapper">
+                                <div class="short_link">
+                                    <input type="text" value="${result.short_url}" class="copy_url"> 
+                                </div>
                             <div class="button">
-                                <button class= "copy">copy</button>
+                                <button class="copy">copy</button>
                             </div>
                         </div>
                     </div>`

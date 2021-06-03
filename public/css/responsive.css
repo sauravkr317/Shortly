@@ -155,11 +155,11 @@
         display: none!important;
     }
     .result-url-wrapper{
-        grid-template-columns: .4fr .6fr!important;
+        grid-template-columns: .8fr .6fr!important;
         padding: 1rem 1.5rem!important;
     }
     .short-url-wrapper{
-        grid-template-columns: .7fr .4fr!important;
+        grid-template-columns: .6fr .4fr!important;
     }
 
     .long-url{
