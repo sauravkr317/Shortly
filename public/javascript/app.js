@@ -3,10 +3,16 @@ let nav = document.querySelector('nav');
 let navlist = document.querySelector('.navlist-wrapper');
 let api_button = document.getElementById('api-button');
 let get_url = document.getElementById('url-input');
+let preloader = document.querySelector('.preloader');
 
 hamburger.addEventListener('click', navPopulate);
 
 api_button.addEventListener('click', fetchurl);
+
+window.addEventListener('load', () => {
+    let loader = document.querySelector('.loader');
+    loader.style.display = 'none';
+})
 
 function navPopulate(e) {
     if (!navlist.className.includes('show')) {
@@ -21,6 +27,7 @@ window.addEventListener('scroll', () => {
 })
 
 async function fetchurl() {
+    preloader.classList.add('show');
     let url = get_url.value;
     let trimurl = url.trim();
     if (validate(url)) {
@@ -39,7 +46,9 @@ async function fetchurl() {
 
             let result = await data.json();
             console.log(result);
+            preloader.classList.remove('show');
             populateDom(result);
+            get_url.value = "";
             let copy_btn = document.querySelector('.copy');
             copy_btn.addEventListener('click', () => {
                 if(!copy_btn.className.includes('copied')) {
@@ -52,8 +61,9 @@ async function fetchurl() {
                 document.execCommand('Copy');
             })
         } catch (error) {
+            preloader.classList.remove('show');
             get_url.value = "";
-            get_url.placeholder = "Server error try again";
+            get_url.placeholder = "Server error please try again";
             console.log('Error');
         }
     }

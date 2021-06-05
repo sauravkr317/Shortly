@@ -190,6 +190,10 @@
 }
 
 @media(min-width: 997px) {
+    nav.show{
+        position: fixed!important;
+    }
+    
     .three-divs{
         grid-template-columns: repeat(3, 1fr)!important;
     }
